@@ -1,12 +1,12 @@
 import { applicationStatus, applicationMilestones, deadlineTime, formatApplicationDate, createApplicationCalendar, applicationReminderTime } from './application-calendar.mjs';
 
 const publications = [
-  { year: '2026', title: 'A multi-axial HARM-based p-y + M-θ model with application to monopile offshore wind turbines in clay under multi-directional cyclic loadings', venue: 'Soil Dynamics and Earthquake Engineering', volume: '209', pages: '110483', doi: '10.1016/j.soildyn.2026.110483', authors: 'Wang L., Wang S., Wang L., Hong Y., Li L.', authorPosition: '第二作者', selfAuthor: 'Wang S.', type: 'published', label: '已发表', tone: 'green' },
-  { year: '2026', title: '海上风电大直径单桩基础阻尼特性与整机动力响应研究', venue: '能源工程', authors: null, authorPosition: null, selfAuthor: null, needsVerification: true, type: 'published', label: '已发表', tone: 'green' },
-  { year: '2025', title: 'A dynamic p-y + M-θ model for monopile in soft clay considering failure mechanism under combined actions of wind and earthquake', venue: 'Computers and Geotechnics', volume: '180', pages: '107074', doi: '10.1016/j.compgeo.2025.107074', authors: 'Wang L., Wang S., Wang L., Hong Y.', authorPosition: '第二作者', selfAuthor: 'Wang S.', type: 'published', label: '已发表', tone: 'green' },
-  { year: '2023', title: 'A Detailed Analysis Framework of Fully Coupled Dynamic Responses for Offshore Wind Turbine Blade', venue: 'OMAE 2023 会议论文', doi: '10.1115/omae2023-104430', authors: 'Wang B., Liang X., Zhang J., Rui S., Zha X., Wang S., Chen Y.', authorPosition: '第六作者', selfAuthor: 'Wang S.', type: 'conference', label: '会议论文', tone: 'blue' },
-  { year: '2022', title: 'Bending Analysis of Double Viscoelastic Nanoplates Based on the Modified Couple Stress Theory and Relaxation Theory', venue: 'Journal of Applied Mechanics and Technical Physics', pages: '711–720', doi: '10.1134/s0021894422040198', authors: 'Wang S. Y., Fang Y., Wang Y. Y., Zhang Y. Q.', authorPosition: '第一作者', selfAuthor: 'Wang S. Y.', type: 'published', label: '已发表', tone: 'green' },
-  { year: '2020', title: '基于修正的偶应力理论的双层粘弹性纳米板双轴屈曲分析', venue: '科技通报', authors: null, authorPosition: null, selfAuthor: null, needsVerification: true, type: 'published', label: '已发表', tone: 'green' }
+  { year: '2026', title: 'A multi-axial HARM-based p-y + M-θ model with application to monopile offshore wind turbines in clay under multi-directional cyclic loadings', venue: 'Soil Dynamics and Earthquake Engineering', volume: '209', pages: '110483', doi: '10.1016/j.soildyn.2026.110483', authors: 'Wang L., Wang S., Wang L., Hong Y., Li L.', selfAuthor: 'Wang S.', type: 'published', label: '已发表', tone: 'green' },
+  { year: '2026', title: '海上风电大直径单桩基础阻尼特性与整机动力响应研究', venue: '能源工程', authors: null, selfAuthor: null, needsVerification: true, type: 'published', label: '已发表', tone: 'green' },
+  { year: '2025', title: 'A dynamic p-y + M-θ model for monopile in soft clay considering failure mechanism under combined actions of wind and earthquake', venue: 'Computers and Geotechnics', volume: '180', pages: '107074', doi: '10.1016/j.compgeo.2025.107074', authors: 'Wang L., Wang S., Wang L., Hong Y.', selfAuthor: 'Wang S.', type: 'published', label: '已发表', tone: 'green' },
+  { year: '2023', title: 'A Detailed Analysis Framework of Fully Coupled Dynamic Responses for Offshore Wind Turbine Blade', venue: 'OMAE 2023 会议论文', doi: '10.1115/omae2023-104430', authors: 'Wang B., Liang X., Zhang J., Rui S., Zha X., Wang S., Chen Y.', selfAuthor: 'Wang S.', type: 'conference', label: '会议论文', tone: 'blue' },
+  { year: '2022', title: 'Bending Analysis of Double Viscoelastic Nanoplates Based on the Modified Couple Stress Theory and Relaxation Theory', venue: 'Journal of Applied Mechanics and Technical Physics', pages: '711–720', doi: '10.1134/s0021894422040198', authors: 'Wang S. Y., Fang Y., Wang Y. Y., Zhang Y. Q.', selfAuthor: 'Wang S. Y.', type: 'published', label: '已发表', tone: 'green' },
+  { year: '2020', title: '基于修正的偶应力理论的双层粘弹性纳米板双轴屈曲分析', venue: '科技通报', authors: null, selfAuthor: null, needsVerification: true, type: 'published', label: '已发表', tone: 'green' }
 ];
 
 const patents = [
@@ -30,7 +30,6 @@ function renderPublications() {
       (authors ? '<p class="publication-authors">'+authors+'</p>' : '')+
       '<p class="publication-title">'+esc(item.title)+'.</p>'+
       '<p class="publication-meta"><em>'+esc(item.venue)+'</em>, '+item.year+(item.volume?', '+esc(item.volume):'')+(item.pages?', '+esc(item.pages):'')+'.</p>'+
-      (item.authorPosition?'<span class="publication-position">'+esc(item.authorPosition)+'</span>':'')+
       (item.doi?' <a class="publication-link" href="https://doi.org/'+item.doi+'" target="_blank" rel="noreferrer">DOI: '+item.doi+'</a>':'')+'</li>';
   }).join('');
   $('#patent-list').innerHTML = '<article class="patent-item"><strong>'+esc(patents[0].title)+'</strong><p>'+esc(patents[0].meta)+'</p></article>';
